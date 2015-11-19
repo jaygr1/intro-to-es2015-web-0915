@@ -1,7 +1,10 @@
 # ES2015
-JavaScript is going through some interesting changes right now. New methods, different ways of doing old things. In this guide, you'll learn about some of those changes, and why they're awesome. You can't run a lot of these in your browser yet, since they're still trying to implement them. Checkout [this](kangax.github.io/compat-table/es6) to see when your favorite browser will be getting these features baked in. In the mean time, we'll use a [transpiler](https://babeljs.io/). If you want to play along run this:
 
-```
+## NOTE: If you're going to follow along, make sure you do this OUTSIDE of this repo. Creating a `.babelrc` file in an Ember app will make it misbehave. This repo has its own tests.
+
+JavaScript is going through some interesting changes right now. New methods, different ways of doing old things. In this guide, you'll learn about some of those changes, and why they're awesome. You can't run a lot of these in your browser yet, since they're still trying to implement them. Checkout [this](http://kangax.github.io/compat-table/es6) to see when your favorite browser will be getting these features baked in. In the mean time, we'll use a [transpiler](https://babeljs.io/). If you want to play along run this:
+
+```bash
 npm install -g babel-cli
 npm install babel-preset-es2015
 ```
@@ -11,7 +14,7 @@ Put this in a file named `.babelrc`
 ```
 
 Then run:
-```
+```bash
 babel <my-file.js> -o output.js
 node output.js
 ```
@@ -24,7 +27,7 @@ We won't have to do any of this business for the labs. It's all taken care of fo
 
 Have you ever seen some code like this, and been confused?
 
-``` javascript
+```javascript
   var steven = {
     name: "Steven",
     friends: ["Jeff", "Josh", "Joe"],
@@ -46,7 +49,7 @@ What gives?! It looks like `this` changed out from under us. What we're seeing h
 
 How do we fix this? We could do this:
 
-``` javascript
+```javascript
 var steven = {
   name: "Steven",
   friends: ["Jeff", "Josh", "Joe"],
@@ -65,7 +68,7 @@ This captures the current `this` before it changes. This works but ES2015 introd
 
 With the `=>` we can change our code to look like this:
 
-``` javascript
+```javascript
 var steven = {
   name: "Steven",
   friends: ["Jeff", "Josh", "Joe"],
@@ -84,7 +87,7 @@ SWEET! This changes the way `this` behaves. Instead of being a dynamic scope, it
 ## Template strings
 JavaScript sucks at multi-line strings. There, __I said it__. It also doesn't have string interpolation like ruby, forcing us to write terrible pieces of code like this one:
 
-``` javascript
+```javascript
   console.log(friend + " is friends with " + this.name);
 ```
 
@@ -256,7 +259,7 @@ export var validJobs = ["programmer", "that's it"]
 export default Job;
 ```
 
-``` javascript
+```javascript
 // person.js
 import Job from './job.js'
 import {validJobs} from './job.js'
@@ -278,3 +281,4 @@ console.log(`${bob.name} is a ${bob.job.title}`);
 
 # Labs
 There's nothing that FORCES you to use ES2015 syntax... but use it!
+Start your server with `ember s` and run the tests by visiting `http://localhost:4200/tests`
